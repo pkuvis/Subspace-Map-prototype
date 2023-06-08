@@ -732,13 +732,6 @@ export default {
           return opc
         })
         .style('fill', color)
-        // .style('fill', (d, i) => {
-        //   if (i < 25) {
-        //     return '#4e79a7'
-        //   } else {
-        //     return '#f28e2c'
-        //   }
-        // })
         // .style('fill-opacity', (d, i) => this.projPointOpacityScale(dataSimilarities[i]))
         .style('fill-opacity', (d, i) => {
           const opc = this.opcScaleNew(0.9 - this.opcScale[this.mode](dataSimilarities[i])) * 0.95 + 0.05
@@ -970,23 +963,11 @@ export default {
         .duration(600)
         .attr('cx', d => this.projPointScale.x(d[0]))
         .attr('cy', d => this.projPointScale.y(d[1]))
-        // .style('fill', color)
+        .style('fill', color)
         // // .style('fill-opacity', (d, i) => this.projPointOpacityScale(1 - dataWeights[i]))
-        // .style('fill-opacity', (d, i) => {
-        //   let opc = this.opcScaleNew(0.9 - this.opcScale[this.mode](dataSimilarities[i])) * 0.95 + 0.05
-        //   return opc
-        // })
-        .style('fill', (d, i) => {
-          if (i < 25) {
-            return '#4e79a7'
-          } else {
-            return '#f28e2c'
-          }
-        })
         .style('fill-opacity', (d, i) => {
-          // const opc = this.opcScaleNew(0.9 - this.opcScale[this.mode](dataSimilarities[i])) * 0.95 + 0.05
-          // return opc
-          return 1
+          const opc = this.opcScaleNew(0.9 - this.opcScale[this.mode](dataSimilarities[i])) * 0.95 + 0.05
+          return opc
         })
       g.selectAll('.backgroundDimPoint')
         .transition()
